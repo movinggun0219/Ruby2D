@@ -6,31 +6,48 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    // 플레이어 캐릭터의 움직임과 관련된 변수 
-    public float moveSpeed = 3.0f;
-    public InputAction MoveAction;
-    Rigidbody2D rigidbody2d;
-    Vector2 move;
+  // Variables related to player character movement
+  public InputAction MoveAction;
+  Rigidbody2D rigidbody2d;
+  Vector2 move;
+  public float speed = 3.0f;
 
 
-    // Start는 첫 번째 프레임 업데이트 전에 호출됩니다 
-    void Start()
-    {
-        MoveAction.Enable();
-        rigidbody2d = GetComponent<Rigidbody2D>();
-    }
+  // Variables related to the health system
+  public int maxHealth = 5;
+  public int health { get { return currentHealth; }}
 
-    // Update는 프레임당 한 번씩 호출됩니다 
-    void Update()
-    {
-        move = MoveAction.ReadValue<Vector2>();
-        Debug.Log(move);
-    }
+  public int currentHealth = 1;
 
 
-    void FixedUpdate()
-    {
-        Vector2 position = (Vector2)rigidbody2d.position + move * moveSpeed * Time.deltaTime;
-        rigidbody2d.MovePosition(position);
-    }
+  // Start is called before the first frame update
+  void Start()
+  {
+     MoveAction.Enable();
+     rigidbody2d = GetComponent<Rigidbody2D>();
+     //currentHealth = maxHealth;
+  }
+ 
+  // Update is called once per frame
+  void Update()
+  {
+     move = MoveAction.ReadValue<Vector2>();
+  }
+
+
+  // FixedUpdate has the same call rate as the physics system
+  void FixedUpdate()
+  {
+     Vector2 position = (Vector2)rigidbody2d.position + move * speed * Time.deltaTime;
+     rigidbody2d.MovePosition(position);
+  }
+
+
+  public void ChangeHealth (int amount)
+  {
+     currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+     Debug.Log(currentHealth + "/" + maxHealth);
+  }
+
+
 }
