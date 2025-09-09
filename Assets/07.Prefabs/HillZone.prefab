@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7507917324737482521}
   - component: {fileID: 7777833952804803542}
   m_Layer: 0
-  m_Name: Decoration_3
+  m_Name: HillZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,7 +114,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.19409204, y: 2.9524498}
@@ -126,7 +126,7 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
   m_Size: {x: 5.6845355, y: 3.2636}
   m_EdgeRadius: 0
